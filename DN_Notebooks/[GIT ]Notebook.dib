@@ -1,0 +1,78 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"name":"csharp","aliases":["c#","C#"],"languageName":"C#"},{"name":"fsharp","aliases":["f#","F#"],"languageName":"F#"},{"name":"pwsh","aliases":["powershell"],"languageName":"PowerShell"},{"name":"javascript","aliases":["js"],"languageName":"JavaScript"},{"name":"html","aliases":[],"languageName":"HTML"},{"name":"sql","aliases":[],"languageName":"SQL"},{"name":"kql","aliases":[],"languageName":"KQL"},{"name":"mermaid","aliases":[],"languageName":"Mermaid"},{"name":"httpRequest","languageName":"http","aliases":[]},{"name":"value","aliases":[]},{"name":"vscode","aliases":["frontend"],"languageName":null},{"name":".NET","aliases":[]},{"name":"webview","aliases":[]}]}}
+
+#!markdown
+
+# PowerShell Notebook
+> VS Code CShP --> Reload Window \
+> VS Code CShP --> Restart Kernel
+
+#!markdown
+
+## Init GIT Class
+
+#!pwsh
+
+# identify ProjectRoot
+$projectRoot = ""
+
+ 1..10 |  % { $path=(('..\' * $_) + '\ProjectSettings\!ProjectSettings.json'); if (Test-Path $path ) { $projectRoot = (cat $path | ConvertFrom-Json ).projectRoot ; return  }  }  
+
+Write-Host $projectRoot;  
+
+#!pwsh
+
+. $projectRoot/Classes/git.ps1; 
+$git = [git]::new()
+
+#!markdown
+
+## Committing Changes
+
+#!pwsh
+
+$currentUser = git config user.name
+$date = Get-Date -Format "yyy-MM-dd"
+
+$commHeaderMessage = 'Minor Changes to Proj structure'
+
+#Body can be multiline. Make a vivid separator for each of the lines, like '-->'
+$commBodyMessage = ` 
+'
+>> ./ProjectSettings/setup.py --> added for bulk import modules into notebooks
+>> ./ProjectSettings/ModulesInstall.ps1 --> added for bulk installing modules to new env
+'
+
+$commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"
+
+$commMsg
+
+#!pwsh
+
+$git.Commit($commMsg)
+$git.SyncBranch()
+
+#!markdown
+
+## Create New Branch (and switching to it)
+
+#!pwsh
+
+$git.ShowBranches()
+
+#!pwsh
+
+$git.NewBranch("VIZ_Pandas_RND_DF")
+
+#!pwsh
+
+$pbx.git_SwitchBranch("PS_updates_learning")
+
+#!markdown
+
+## Merging to Main
+
+#!pwsh
+
+$   $git.MergeToMain()
