@@ -86,8 +86,7 @@ class GIT {
             #       ask for BrName
             $branchName = Read-Host -Prompt "Input name of new branch... ( 'Q' to cancel ) --> "
             if ($branchName -eq "Q") { break }
-        }
-        
+        }        
     
         git checkout -b $branchName
     
