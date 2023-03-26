@@ -14,20 +14,17 @@
 
 #!pwsh
 
-# identify ProjectRoot
+Test-Path ..\ProjectSettings\!ProjectSettings.json
+
+#!pwsh
+
+# identify ProjectRoot. Pay Attention that for things to work, this ProjectRoot should be specified in !ProjectSettings.json
+
 $projectRoot = ""
 
  1..10 |  % { $path=(('..\' * $_) + '\ProjectSettings\!ProjectSettings.json'); if (Test-Path $path ) { $projectRoot = (cat $path | ConvertFrom-Json ).projectRoot ; return  }  }  
 
 Write-Host $projectRoot;  
-
-#!markdown
-
-???????????????
-
-#!pwsh
-
-Test-Path '..\\ProjectSettings\!ProjectSettings.json'
 
 #!pwsh
 
@@ -43,7 +40,7 @@ $git = [git]::new()
 $currentUser = git config user.name
 $date = Get-Date -Format "yyy-MM-dd"
 
-$commHeaderMessage = 'Minor Changes to Proj structure'
+$commHeaderMessage = 'Some bugs fixed in '
 
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
