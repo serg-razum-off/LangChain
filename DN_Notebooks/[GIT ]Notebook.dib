@@ -14,10 +14,6 @@
 
 #!pwsh
 
-Test-Path ..\ProjectSettings\!ProjectSettings.json
-
-#!pwsh
-
 # identify ProjectRoot. Pay Attention that for things to work, this ProjectRoot should be specified in !ProjectSettings.json
 
 $projectRoot = ""
@@ -40,13 +36,12 @@ $git = [git]::new()
 $currentUser = git config user.name
 $date = Get-Date -Format "yyy-MM-dd"
 
-$commHeaderMessage = 'Some bugs fixed in '
+$commHeaderMessage = 'LCh site compilining'
 
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
 '
->> ./ProjectSettings/setup.py --> added for bulk import modules into notebooks
->> ./ProjectSettings/ModulesInstall.ps1 --> added for bulk installing modules to new env
+>> 
 '
 
 $commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"

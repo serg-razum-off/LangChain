@@ -1,3 +1,5 @@
+
 {
-    "Open_AI_Key": "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"
+    // use keys as os.environ (https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)
+    "Open_AI_Key": "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" 
 }
