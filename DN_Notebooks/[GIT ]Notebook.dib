@@ -41,7 +41,8 @@ $commHeaderMessage = 'LCh site compilining'
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
 '
->> 
+>> code created for getting set of links from main site page
+>> code created for compiling each page as .pdf
 '
 
 $commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"
