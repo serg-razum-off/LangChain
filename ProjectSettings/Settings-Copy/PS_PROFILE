@@ -176,11 +176,12 @@ function csv2dt ($scv) {
 #region StartersFunctions
 #------------------------- Starters helpers -------------------------
 # ⭐⭐⭐ np --> launches notepadd++
-function np { Start-Process notepad++ $($args -join ' ')} 
+function np { Start-Process notepad++ $($args -join ' ') } 
 Set-Alias -Name 'dnh' -Value Get-NetHelp -Scope Global # fn in this file                                                                  
 function startm ([string] $AppName) { Search-StartMenu $AppName | invoke-item }   # ⭐⭐⭐ requires PowerShellCookbook Module installed 
 Set-Alias -Name getm -Value Get-StartApps
 function gt { Start-Process "https://translate.google.com/?sl=en&tl=uk&text=$($args -join ' ')&op=translate" } 
+function dp { Start-Process "https://www.deepl.com/translator#en/uk/$($args -join ' ')" } 
 function gs { Start-Process "https://www.google.com/search?q=$($args -join ' ')" }
 function li { Start-Process "https://www.linkedin.com/in/sergiy-razumov-33670b131/" }
 function gpt {
@@ -224,13 +225,23 @@ function mpz {
     $param = $args -join ' '
     switch ($param) {
         { $param -match '(sht|sh|shtat)' } { Start-Process "https://drive.google.com/drive/folders/1Ziq6VHWASvsa3AeoBMifLQB45J0WEUIW" ; break }
-        { $param -match '(loc|local)' } { inv 'C:\Users\Sergey\OneDrive\Xls\ТО2022 3р2в\MPZ' ; break}
-        { $param -match '(gpp|gppu)' } { Start-Process 'https://drive.google.com/drive/folders/1XuZSmXD3_DemOraPiB09ilZ4i10lVGDg' ; break}
-        { $param -match '(med|media)' } { Start-Process 'https://drive.google.com/drive/folders/1BD7E4AdjAxM8CAGSfbun_DeYP89b0bwe' ; break}
+        { $param -match '(loc|local)' } { inv 'C:\Users\Sergey\OneDrive\Xls\ТО2022 3р2в\MPZ' ; break }
+        { $param -match '(gpp|gppu)' } { Start-Process 'https://drive.google.com/drive/folders/1XuZSmXD3_DemOraPiB09ilZ4i10lVGDg' ; break }
+        { $param -match '(med|media)' } { Start-Process 'https://drive.google.com/drive/folders/1BD7E4AdjAxM8CAGSfbun_DeYP89b0bwe' ; break }
         Default { Start-Process "https://drive.google.com/drive/folders/1TuylLnpaaSqbq8YGIPhHjumny0jqOoCA" ; break }
     }
 }
 
+function gd {
+    $param = $args -join ' '
+
+    switch ($param) {
+        {$param -eq ''} {Start-Process "https://drive.google.com/drive/my-drive"; break }
+        { $param -match '(star|personal|lnk|links)' } { Start-Process "https://drive.google.com/drive/starred" ; break}
+        { $param -match '(dh|dharma)' } { Start-Process "https://drive.google.com/drive/folders/15QdIOWMd0hA7Ygv0w9kPI9lI2OMV9AnA" ; break}
+        { $param -match '(res|resum|resume)' } { Start-Process "https://drive.google.com/drive/folders/1j9rg_Bw3SyZg9rByfDmZhnzJeiJdV_9v" ; break}
+    }
+}
 #endregion
 
 #region fun
@@ -301,7 +312,7 @@ function prompt {
         # catch [System.Management.Automation.MethodInvocationException] {
         #     $mainBrName = "lc-" + ( git branch --show-current )
         # }
-        catch{
+        catch {
             $mainBrName = "#-Err-Id-#"
         }
 

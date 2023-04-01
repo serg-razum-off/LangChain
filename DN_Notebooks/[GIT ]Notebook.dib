@@ -36,13 +36,12 @@ $git = [git]::new()
 $currentUser = git config user.name
 $date = Get-Date -Format "yyy-MM-dd"
 
-$commHeaderMessage = 'LCh site compilining'
+$commHeaderMessage = 'LCh site compilining 2'
 
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
 '
->> code created for getting set of links from main site page
->> code created for compiling each page as .pdf
+>> code updated: part of breadcrumbs included to file name. Getting_started --> llm_Getting_started
 '
 
 $commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"
