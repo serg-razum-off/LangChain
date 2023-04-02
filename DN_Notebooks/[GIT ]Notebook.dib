@@ -36,12 +36,12 @@ $git = [git]::new()
 $currentUser = git config user.name
 $date = Get-Date -Format "yyy-MM-dd"
 
-$commHeaderMessage = 'LCh site compilining 2'
+$commHeaderMessage = '[LNG] LangChain docs.ipynb added'
 
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
 '
->> code updated: part of breadcrumbs included to file name. Getting_started --> llm_Getting_started
+>> Initial logic for indexing LCh .pdfs was created
 '
 
 $commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"
