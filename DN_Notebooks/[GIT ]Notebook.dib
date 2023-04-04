@@ -14,7 +14,7 @@
 
 #!pwsh
 
-# identify ProjectRoot. Pay Attention that for things to work, this ProjectRoot should be specified in !ProjectSettings.json
+# identify ProjectRoot. Pay Attention that this ProjectRoot should be specified in !ProjectSettings.json
 
 $projectRoot = ""
 
@@ -36,12 +36,12 @@ $git = [git]::new()
 $currentUser = git config user.name
 $date = Get-Date -Format "yyy-MM-dd"
 
-$commHeaderMessage = '[LNG] LangChain docs.ipynb added'
+$commHeaderMessage = '[LNG] LangChain docs.ipynb /in progress/'
 
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
 '
->> Initial logic for indexing LCh .pdfs was created
+>> Functionality for Vectorstore.persist() added
 '
 
 $commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"
