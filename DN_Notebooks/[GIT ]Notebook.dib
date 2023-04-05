@@ -41,7 +41,7 @@ $commHeaderMessage = '[LNG] LangChain docs.ipynb /in progress/'
 #Body can be multiline. Make a vivid separator for each of the lines, like '-->'
 $commBodyMessage = ` 
 '
->> Functionality for Vectorstore.persist() added
+>> Persisted vectordb saved and loaded; qwr returned the answer
 '
 
 $commMsg = "$currentUser [$date]: $commHeaderMessage `n $commBodyMessage"
